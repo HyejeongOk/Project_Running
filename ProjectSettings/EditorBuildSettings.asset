@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/LobbyScene.unity
     guid: 7bd6da1ae30ea3142be6f9fbe3df6360
+  - enabled: 1
+    path: Assets/1.Scene/WaitingScene.unity
+    guid: 0f3e1a02a2af13c41bb2d4b0793258dd
+  - enabled: 1
+    path: Assets/1.Scene/GameScene.unity
+    guid: ed2dffe56a94ae545bc43ecddfce89d6
+  - enabled: 1
+    path: Assets/1.Scene/ResultScene.unity
+    guid: b6457ce3d547071409230aad41a202ba
   m_configObjects: {}
