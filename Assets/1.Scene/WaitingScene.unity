@@ -498,6 +498,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectcharacter: {fileID: 11400000, guid: a7619e2fa893f1840b6350cce4216c08, type: 2}
   selectpet: {fileID: 0}
+  Score_txt: {fileID: 5115318422253051957, guid: 7a57a620deb98744aa479e6a178725c9, type: 3}
+  isGameover: 0
+  Score: 0
 --- !u!4 &451118200
 Transform:
   m_ObjectHideFlags: 0

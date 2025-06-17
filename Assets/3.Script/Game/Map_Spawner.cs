@@ -8,7 +8,7 @@ public class Map_Spawner : MonoBehaviour
     public int count = 3;
 
     private float TimebetSpawnMin = 0.1f;
-    private float TimebetSpawnMax = 0.5f;
+    private float TimebetSpawnMax = 1f;
     private float TimebetSpawn;
 
     public float spawnXpos = 20f;   //스폰할 X 위치
