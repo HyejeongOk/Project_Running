@@ -16,3 +16,4 @@ MonoBehaviour:
   stand_obj: {fileID: 91075272474204395, guid: 151a13a4d122b9f4fa36882b4f9f10a5, type: 3}
   run_obj: {fileID: 8902156827550288831, guid: b309c3f74026f1547a7f49ca746a6a47, type: 3}
   Grade: {fileID: 1335550061986339665, guid: a90b531b7e0b61345a25d523fd4b7c5c, type: 3}
+  ingame_obj: {fileID: 8768517793230595915, guid: e612948ee5afcfd4191be1047112cb4c, type: 3}

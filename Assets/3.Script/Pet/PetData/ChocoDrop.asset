@@ -15,3 +15,4 @@ MonoBehaviour:
   PetName: "\uCD08\uCF54\uBC29\uC6B8"
   Pet_obj: {fileID: 3526035833590120540, guid: 436e974533fde584fb69844b21a95136, type: 3}
   Grade: {fileID: 1335550061986339665, guid: a90b531b7e0b61345a25d523fd4b7c5c, type: 3}
+  ingame_obj: {fileID: 6707803175937864655, guid: f20d39210a43980478271c05e76e594f, type: 3}

@@ -12,13 +12,13 @@ public class PlayerController : MonoBehaviour
     private bool iscrash = false;
     private bool isDead = false;
 
-    private Rigidbody player_r;
+    private Rigidbody2D player_r;
     private Animator animator;
     private AudioSource audioSource;
 
     private void Start()
     {
-        player_r = transform.GetComponent<Rigidbody>();
+        player_r = transform.GetComponent<Rigidbody2D>();
         animator = transform.GetComponent<Animator>();
         audioSource = transform.GetComponent<AudioSource>();
     }

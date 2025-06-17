@@ -50,6 +50,7 @@ public class SelectManager_Chr : MonoBehaviour
         // Scene에 캐릭터 반영
         DisplayonSceneCharacter();
 
+        // 선택한 캐릭터 갱신
         SelectDisplayedCharacter();
     }
 

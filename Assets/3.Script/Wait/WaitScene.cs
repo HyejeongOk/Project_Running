@@ -9,6 +9,9 @@ public class WaitScene : MonoBehaviour
     public GameObject Character_btn;
     public GameObject Pet_btn;
 
+    private SelectManager_Chr selectchr_mgr;
+    private SelectManager_Pet selectpet_mgr;
+
     // 캐릭터 선택창 열기
     public void OpenCharacterSelect()
     {
@@ -33,6 +36,16 @@ public class WaitScene : MonoBehaviour
         Pet_btn.SetActive(false);
     }
 
+    // 게임하기
+    public void OnClickPlayBtn()
+    {
+        if(GameManager.instance.selectcharacter == null || GameManager.instance.selectpet == null)
+        {
+            Debug.Log("캐릭터랑 펫이 모두 선택되지 않았습니다.");
+        }
+
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
+    }
 
     // 로비로 돌아가기
     public void BacktoLobbyScene()

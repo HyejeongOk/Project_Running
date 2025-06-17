@@ -21,6 +21,7 @@ public class SelectCharacter : MonoBehaviour
 
     private SelectManager_Chr selectchr_mgr;
 
+    //캐릭터 선택창 초기화
     public void Initialized(SelectManager_Chr mgr)
     {
         selectchr_mgr = mgr;
@@ -40,10 +41,12 @@ public class SelectCharacter : MonoBehaviour
 
     public void OnSelectButtonClicked()
     {
+        //캐릭터 선택 메소드
         selectchr_mgr.SelectCharacter(this);
 
     }
 
+    // 정지 상태
     public void SetIdleState()
     {
         stand_obj.SetActive(true);
@@ -52,6 +55,7 @@ public class SelectCharacter : MonoBehaviour
         check_btn.gameObject.SetActive(false);
     }
 
+    // 달리기 상태
     public void SetRunState()
     {
         stand_obj.SetActive(false);

@@ -5,14 +5,14 @@ using UnityEngine;
 public class SelectManager_Pet : MonoBehaviour
 {
     public List<PetData> Petdatas;
-    public List<SelectPet> petSlots;  // 캐릭터 슬롯
+    public List<SelectPet> petSlots;  // 펫 슬롯
 
     private SelectPet selectPet = null;
 
     [Header("Scene에 배치할 펫")]
-    public PetData selectedPetData; // 현재 선택된 캐릭터
-    public Transform scenePetSpawner; // 씬에 캐릭터 위치
-    public GameObject currentPet; // 현재 씬에 있는 캐릭터
+    public PetData selectedPetData; // 현재 선택된 펫
+    public Transform scenePetSpawner; // 씬에 펫 위치
+    public GameObject currentPet; // 현재 씬에 있는 펫
 
     private void Start()
     {
@@ -28,7 +28,8 @@ public class SelectManager_Pet : MonoBehaviour
 
         DisplayonScenePet();
 
-        SelectDisplayedCharacter();
+        // 선택한 펫 갱신
+        SelectDisplayedPet();
     }
 
     public void SelectPet(SelectPet select)
@@ -40,7 +41,13 @@ public class SelectManager_Pet : MonoBehaviour
         selectPet= select;
         selectPet.SetRunState();
 
+        selectedPetData = select.petdata;
         GameManager.instance.selectpet = select.petdata;
+
+        DisplayonScenePet();
+
+        // 선택한 펫 갱신
+        SelectDisplayedPet();
     }
 
     // 씬에 캐릭터 배치
@@ -54,12 +61,10 @@ public class SelectManager_Pet : MonoBehaviour
 
         //새로운 캐릭터 생성
         currentPet = Instantiate(selectedPetData.Pet_obj, scenePetSpawner.position, Quaternion.identity, scenePetSpawner);
-
-        SelectDisplayedCharacter(); //버튼 여부
     }
 
     // 선택하면 체크 표시
-    public void SelectDisplayedCharacter()
+    public void SelectDisplayedPet()
     {
         foreach (var slot in petSlots)
         {
