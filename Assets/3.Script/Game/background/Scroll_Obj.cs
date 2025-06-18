@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Scroll_Obj : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
-
     private void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(Vector2.left * GameManager.instance.bgSpeed * Time.deltaTime);
     }
 }

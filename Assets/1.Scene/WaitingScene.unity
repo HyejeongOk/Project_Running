@@ -476,31 +476,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451118200}
-  - component: {fileID: 451118199}
+  - component: {fileID: 451118201}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ScrollManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &451118199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451118198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45c93ffd0500334896f9d6d047abfa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectcharacter: {fileID: 11400000, guid: a7619e2fa893f1840b6350cce4216c08, type: 2}
-  selectpet: {fileID: 0}
-  Score_txt: {fileID: 5115318422253051957, guid: 7a57a620deb98744aa479e6a178725c9, type: 3}
-  isGameover: 0
-  Score: 0
 --- !u!4 &451118200
 Transform:
   m_ObjectHideFlags: 0
@@ -516,6 +499,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451118201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451118198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174c01e01c4770b45a63073eb208b41f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465950118
 GameObject:
   m_ObjectHideFlags: 0

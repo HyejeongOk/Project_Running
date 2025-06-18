@@ -39,7 +39,7 @@ public class WaitScene : MonoBehaviour
     // 게임하기
     public void OnClickPlayBtn()
     {
-        if(GameManager.instance.selectcharacter == null || GameManager.instance.selectpet == null)
+        if(ScrollManager.instance.selectcharacter == null || ScrollManager.instance.selectpet == null)
         {
             Debug.Log("캐릭터랑 펫이 모두 선택되지 않았습니다.");
         }

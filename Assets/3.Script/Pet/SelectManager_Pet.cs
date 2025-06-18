@@ -24,7 +24,7 @@ public class SelectManager_Pet : MonoBehaviour
 
         // 기본 캐릭터 선택 및 씬 생성
         selectedPetData = Petdatas[0];
-        GameManager.instance.selectpet = selectedPetData;
+        ScrollManager.instance.selectpet = selectedPetData;
 
         DisplayonScenePet();
 
@@ -42,7 +42,7 @@ public class SelectManager_Pet : MonoBehaviour
         selectPet.SetRunState();
 
         selectedPetData = select.petdata;
-        GameManager.instance.selectpet = select.petdata;
+        ScrollManager.instance.selectpet = select.petdata;
 
         DisplayonScenePet();
 

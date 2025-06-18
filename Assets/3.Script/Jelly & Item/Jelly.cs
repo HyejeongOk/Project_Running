@@ -10,9 +10,7 @@ public class Jelly : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("Ãæµ¹");
             GameManager.instance.AddScore(score);
-            Debug.Log($"Á¡¼ö È¹µæ : {score}");
             Destroy(gameObject);
         }
     }

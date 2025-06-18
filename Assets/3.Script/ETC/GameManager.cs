@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //¹è°æ, ¸Ê ¼Óµµ
+    public float bgSpeed = 10f;
+    public float mapSpeed = 10f;
+    
     public static GameManager instance = null;
-    public CharacterData selectcharacter;
-    public PetData selectpet;
- 
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         else

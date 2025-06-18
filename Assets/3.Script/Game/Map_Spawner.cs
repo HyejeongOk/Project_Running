@@ -9,7 +9,7 @@ public class Map_Spawner : MonoBehaviour
 
     private float TimebetSpawnMin = 0.1f;
     private float TimebetSpawnMax = 1f;
-    private float TimebetSpawn;
+   // private float TimebetSpawn;
 
     public float spawnXpos = 20f;   //스폰할 X 위치
 
@@ -17,7 +17,10 @@ public class Map_Spawner : MonoBehaviour
     private int currentindex = 0;
 
     private Vector2 poolposition = new Vector2(20f, 0f);    //대기 위치
-    private float LastSpawnTime;
+   // private float LastSpawnTime;
+
+    private Coroutine spawn_co;
+    private bool isPause = false;
 
     private void Start()
     {
@@ -29,38 +32,97 @@ public class Map_Spawner : MonoBehaviour
             int rndindex = Random.Range(0, Map_Prefabs.Length);
             Maps[i] = Instantiate(Map_Prefabs[rndindex], poolposition, Quaternion.identity);
         }
-        LastSpawnTime = Time.time;
-        TimebetSpawn = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
+        //LastSpawnTime = Time.time;
+        //TimebetSpawn = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
+
+        spawn_co = StartCoroutine(SpawnRoutine());
     }
 
-    private void Update()
+    private IEnumerator SpawnRoutine()
     {
-        if (Time.time >= LastSpawnTime + TimebetSpawn)
+        while (true)
         {
-            Debug.Log($"Time.time = {Time.time}, LastSpawnTime = {LastSpawnTime}\n, TimebetSpawn = {TimebetSpawn}");
-            LastSpawnTime = Time.time;  // 마지막에 스폰한 시간
-            TimebetSpawn = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
-            
-            //맵 랜덤 변수
-            int rndindex = Random.Range(0, Map_Prefabs.Length);
-            Maps[currentindex] = Instantiate(Map_Prefabs[rndindex], new Vector2(spawnXpos, 0f), Quaternion.identity);
+            // 다음 스폰까지 대기
+            float waitTime = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
+            // 대기 중에도 멈춤
+            float elapsed = 0f;
 
-            Maps[currentindex].transform.position = new Vector2(spawnXpos, 0f);
-
-            // Scroll_map 스크립트 추가
-            if(Maps[currentindex].GetComponent<Scroll_Map>() == null)
+            while(elapsed < waitTime)
             {
-                Maps[currentindex].AddComponent<Scroll_Map>();
+                if (!isPause)
+                {
+                    elapsed += Time.deltaTime;
+                }
+                yield return null;
             }
 
-            currentindex++;
-            Debug.Log(currentindex);
-
-            if (currentindex >= count)
+            //만약 대기가 끝났을 때도 isPause면 스폰 패스하고 다음 프레임으로
+            if(isPause)
             {
-                currentindex = 0;
+                continue;
             }
+
+                //맵 랜덤 변수
+                int rndindex = Random.Range(0, Map_Prefabs.Length);
+                Maps[currentindex] = Instantiate(Map_Prefabs[rndindex], new Vector2(spawnXpos, 0f), Quaternion.identity);
+
+                //Maps[currentindex].transform.position = new Vector2(spawnXpos, 0f);
+
+                // Scroll_map 스크립트 추가
+                if (Maps[currentindex].GetComponent<Scroll_Map>() == null)
+                {
+                    Maps[currentindex].AddComponent<Scroll_Map>();
+                }
+
+                currentindex++;
+
+                if (currentindex >= count)
+                {
+                    currentindex = 0;
+                }
+
+
+           
 
         }
+    }
+
+    //private void Update()
+    //{
+    //    if(isPause)
+    //    {
+    //        return;
+    //    }
+
+    //    if (Time.time >= LastSpawnTime + TimebetSpawn)
+    //    {
+    //        LastSpawnTime = Time.time;  // 마지막에 스폰한 시간
+    //        TimebetSpawn = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
+            
+    //        //맵 랜덤 변수
+    //        int rndindex = Random.Range(0, Map_Prefabs.Length);
+    //        Maps[currentindex] = Instantiate(Map_Prefabs[rndindex], new Vector2(spawnXpos, 0f), Quaternion.identity);
+
+    //        Maps[currentindex].transform.position = new Vector2(spawnXpos, 0f);
+
+    //        // Scroll_map 스크립트 추가
+    //        if(Maps[currentindex].GetComponent<Scroll_Map>() == null)
+    //        {
+    //            Maps[currentindex].AddComponent<Scroll_Map>();
+    //        }
+
+    //        currentindex++;
+
+    //        if (currentindex >= count)
+    //        {
+    //            currentindex = 0;
+    //        }
+
+    //    }
+    //}
+
+    public void SetPause(bool pause)
+    {
+        isPause = pause;
     }
 }

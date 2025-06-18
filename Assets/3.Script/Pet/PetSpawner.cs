@@ -8,11 +8,11 @@ public class PetSpawner : MonoBehaviour
 
     private void Start()
     {
-        if(GameManager.instance.selectpet == null)
+        if(ScrollManager.instance.selectpet == null)
         {
             Debug.Log("선택된 펫이 없습니다.");
         }
-        GameObject pet = Instantiate(GameManager.instance.selectpet.ingame_obj,
+        GameObject pet = Instantiate(ScrollManager.instance.selectpet.ingame_obj,
             petSpawner.position, Quaternion.identity, petSpawner);
 
         //Player 태그가 붙은 캐릭터 찾기

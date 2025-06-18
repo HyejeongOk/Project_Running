@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Scroll_Map : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
     [SerializeField] private float destroyXpos = -30f;
+
+    // ±§º”¡˙¡÷ æ∆¿Ã≈€ »πµÊ Ω√
 
     private void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(Vector2.left * GameManager.instance.mapSpeed * Time.deltaTime);
 
         if(transform.position.x <= destroyXpos)
         {

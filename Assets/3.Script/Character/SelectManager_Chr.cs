@@ -24,7 +24,7 @@ public class SelectManager_Chr : MonoBehaviour
 
         // 기본 캐릭터 선택 및 씬 생성
         selectedCharacterData = characterDatas[0];
-        GameManager.instance.selectcharacter = selectedCharacterData;
+        ScrollManager.instance.selectcharacter = selectedCharacterData;
 
         DisplayonSceneCharacter();
 
@@ -45,7 +45,7 @@ public class SelectManager_Chr : MonoBehaviour
 
         // 선택한 캐릭터 데이터 저장
         selectedCharacterData = select.characterdata;
-        GameManager.instance.selectcharacter = select.characterdata;
+        ScrollManager.instance.selectcharacter = select.characterdata;
 
         // Scene에 캐릭터 반영
         DisplayonSceneCharacter();
