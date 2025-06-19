@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
 
+    private HPBar hp;
+
     private void Start()
     {
         player_r = transform.GetComponent<Rigidbody2D>();
@@ -141,5 +143,4 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.mapSpeed = mapSpeed;
         Debug.Log($"광속질주 시작 전 : {GameManager.instance.bgSpeed}");
     }
-
 }

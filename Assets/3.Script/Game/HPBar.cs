@@ -56,6 +56,18 @@ public class HPBar : MonoBehaviour
         }
     }
 
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+        
+        if(currentHP >= MAXHP)
+        {
+            currentHP = MAXHP;
+        }
+
+        UpdateHP();
+    }
+
     private void UpdateHP()
     {
         if(HPbar != null)
