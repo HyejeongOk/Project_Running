@@ -42,6 +42,12 @@ public class Map_Spawner : MonoBehaviour
     {
         while (true)
         {
+            //만약 게임이 종료되면 coroutine 멈춤
+            if(GameManager.instance.isGameover)
+            {
+                yield break;
+            }
+
             // 다음 스폰까지 대기
             float waitTime = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
             // 대기 중에도 멈춤

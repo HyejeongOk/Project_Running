@@ -10,6 +10,11 @@ public class Scroll_Map : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.instance.isGameover)
+        {
+            return;
+        }
+
         transform.Translate(Vector2.left * GameManager.instance.mapSpeed * Time.deltaTime);
 
         if(transform.position.x <= destroyXpos)

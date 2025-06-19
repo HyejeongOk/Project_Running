@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool iscrash = false;
     private bool isDead = false;
     public bool isStop = false;
+    public bool isHPZero = false; // 체력이 0인가?
 
     private Rigidbody2D player_r;
     private Animator animator;
@@ -52,7 +53,40 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetBool("Grounded", isGrounded);
     }
-    
+
+    // 구멍에 빠졌을 때와 장애물에 충돌할 때 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 구멍에 빠지면 게임 종료
+        if (collision.CompareTag("Hole") && !isDead)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        // 플레이어 사망 애니메이션 출력
+        animator.SetTrigger("Die");
+
+        // 물리 멈추기
+        player_r.velocity = Vector2.zero;
+        player_r.bodyType = RigidbodyType2D.Kinematic;
+
+        isStop = true; 
+        isDead = true;
+
+        // 게임 오버
+        StartCoroutine(GameManager.instance.Gameover_co());
+        //GameManager.instance.isGameover = true;
+    }
+
+    public void HPZero()
+    {
+        isHPZero = true;    // 체력 0인 상태를 저장
+    }
+
+    // 일시 정지
     public void SetStop(bool stop)
     {
         isStop = stop;
@@ -71,24 +105,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        iscrash = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        iscrash = false;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //바닥에 닿았음을 감지하기 위해 사용
         // 어떤 콜라이더에 닿았으며, 충돌 표면이 위쪽을 보고 있다면
-        if (collision.contacts[0].normal.y > 0.7f)
+        if (collision.contacts[0].normal.y > 0.1f)
         {
             isGrounded = true;
             jumpcount = 0;
+        }
+
+        // 체력이 0이고 착지했다면 사망 처리
+        if(isHPZero && !isDead)
+        {
+            Die();
         }
     }
 

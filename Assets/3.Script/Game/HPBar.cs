@@ -9,10 +9,14 @@ public class HPBar : MonoBehaviour
     public int currentHP;
     public Image HPbar;
 
+    private PlayerController player;
+
     private Coroutine hp_co;
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>();
+
         currentHP = MAXHP;
         StartDecreaseHP();
     }
@@ -40,7 +44,7 @@ public class HPBar : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // 체력이 1씩 줄어듭니다...
-            Damage(1);
+            Damage(30);
         }
     }
 
@@ -52,6 +56,7 @@ public class HPBar : MonoBehaviour
 
         if(currentHP <= 0)
         {
+            player.HPZero();
             Debug.Log("게임오버");
         }
     }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
@@ -31,10 +32,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //if(isGameover)
-        //{
-        //    SceneManager.LoadScene(4, LoadSceneMode.Single);
-        //}
+        if (isGameover)
+        {
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
+        }
     }
 
     public void InitializeScore(Text text)
@@ -52,5 +53,16 @@ public class GameManager : MonoBehaviour
             // UI Ãß°¡
             Score_txt.text = Score.ToString();
         }
+    }
+
+    public IEnumerator Gameover_co()
+    {
+        isGameover = true;
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
+
+        
     }
 }
