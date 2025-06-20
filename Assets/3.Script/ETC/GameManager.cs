@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     //¹è°æ, ¸Ê ¼Óµµ
-    public float bgSpeed = 10f;
-    public float mapSpeed = 10f;
+    public float bgSpeed = 5f;
+    public float mapSpeed = 5f;
     
     public static GameManager instance = null;
     private void Awake()

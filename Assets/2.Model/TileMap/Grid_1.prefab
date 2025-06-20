@@ -596,6 +596,10 @@ PrefabInstance:
       value: Jelly (4)
       objectReference: {fileID: 0}
     - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -686,6 +690,10 @@ PrefabInstance:
       value: Jelly (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -774,6 +782,14 @@ PrefabInstance:
     - target: {fileID: 4259602182258442916, guid: e51120dad3895f445a48fdfe747335ce, type: 3}
       propertyPath: m_Name
       value: epN01_tm01_jp1A
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871144363503994440, guid: e51120dad3895f445a48fdfe747335ce, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871144363503994440, guid: e51120dad3895f445a48fdfe747335ce, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -110667769
       objectReference: {fileID: 0}
     - target: {fileID: 6173774843423107458, guid: e51120dad3895f445a48fdfe747335ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -904,6 +920,10 @@ PrefabInstance:
       value: Jelly (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -992,6 +1012,10 @@ PrefabInstance:
     - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
       propertyPath: m_Name
       value: Jelly (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
       propertyPath: m_StaticEditorFlags

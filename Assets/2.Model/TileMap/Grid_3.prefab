@@ -633,6 +633,10 @@ PrefabInstance:
       value: Jelly
       objectReference: {fileID: 0}
     - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511393587453442020, guid: 4295db90aa18691478c19af1f6338c25, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

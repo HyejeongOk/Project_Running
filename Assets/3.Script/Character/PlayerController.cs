@@ -17,6 +17,13 @@ public class PlayerController : MonoBehaviour
     public bool isStop = false;
     public bool isHPZero = false; // 체력이 0인가?
 
+    public bool isGiant = false; //거대화인가?
+    public bool isBlast = false; //광속질주인가?
+
+    // 거대화, 광속질주
+    public Coroutine Giant_co;
+    public Coroutine Blast_co;
+
     private Rigidbody2D player_r;
     private Animator animator;
     private AudioSource audioSource;
@@ -163,6 +170,44 @@ public class PlayerController : MonoBehaviour
             HPZero();
             Die();
         }
+
+        else if(collision.CompareTag("Obstacle") && !iscrash &&!isGiant && !isBlast)
+        {
+            Debug.Log(collision.gameObject.name);
+            StartCoroutine(Crash_co());
+        }
+    }
+
+    // 장애물 충돌
+    public IEnumerator Crash_co()
+    {
+        iscrash = true;
+        animator.SetTrigger("Crash");
+
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        if(sprite != null)
+        {
+            float blink = 3f;
+            float interval = 0.1f;
+            float elapsed = 0f;
+
+            while(elapsed < blink)
+            {
+                // 반투명
+                sprite.color = new Color(1f, 1f, 1f, 0.3f);
+                yield return new WaitForSeconds(interval);
+
+                //원래대로
+                sprite.color = new Color(1f, 1f, 1f, 1f);
+                yield return new WaitForSeconds(interval);
+
+                elapsed += blink * 2;
+            }
+
+            // 마지막엔 원상복구
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+        }
+        iscrash = false;
     }
 
     // 플레이어 사망
@@ -214,26 +259,38 @@ public class PlayerController : MonoBehaviour
     // 거대화 아이템 획득 시 2배로 커짐
     public void ActiveGiant(float duration)
     {
-        StartCoroutine(GiantMode(duration));
+        if(Giant_co != null)
+        {
+            StopCoroutine(Giant_co);
+        }
+        Giant_co = StartCoroutine(GiantMode(duration));
     }
 
     private IEnumerator GiantMode(float duration)
     {
+        isGiant = true;
         transform.localScale = new Vector3(2f, 2f, 2f);
 
         yield return new WaitForSeconds(duration);
 
         transform.localScale = new Vector3(1f, 1f, 1f);
+        isGiant = false;
+        Giant_co = null;
     }
 
     // 광속질주 아이템 확득 시 속력 커짐
     public void ActiveBlast(float duration, float boostbg, float boostmap)
     {
-        StartCoroutine(BlastMode(duration, boostbg, boostmap));
+        if(Blast_co != null)
+        {
+            StopCoroutine(Blast_co);
+        }
+        Blast_co = StartCoroutine(BlastMode(duration, boostbg, boostmap));
     }
 
     private IEnumerator BlastMode(float duration, float boostbg, float boostmap)
     {
+        isBlast = true;
         float bgSpeed = GameManager.instance.bgSpeed;
         float mapSpeed = GameManager.instance.mapSpeed;
 
@@ -256,6 +313,8 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.bgSpeed = bgSpeed;
         GameManager.instance.mapSpeed = mapSpeed;
         Debug.Log($"광속질주 시작 전 : {GameManager.instance.bgSpeed}");
+        isBlast = false;
+        Blast_co = null;
     }
     #endregion
 }

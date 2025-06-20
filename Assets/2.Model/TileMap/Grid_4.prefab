@@ -747,6 +747,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: epN01_tm01_jp2down
       objectReference: {fileID: 0}
+    - target: {fileID: 8659522869475144973, guid: f32a9d6862e31d744b8017dc78d0d30e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

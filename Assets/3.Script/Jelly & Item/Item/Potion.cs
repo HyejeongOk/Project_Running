@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-    public int amount = 1;
+    public int amount = 5;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
