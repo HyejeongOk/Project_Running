@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //배경, 맵 기본속도
+    public float basicbgSpeed = 5f;
+    public float basicmapSpeed = 5f;
+
     //배경, 맵 속도
     public float bgSpeed = 5f;
     public float mapSpeed = 5f;

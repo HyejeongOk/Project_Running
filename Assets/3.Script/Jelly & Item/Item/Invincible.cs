@@ -10,8 +10,8 @@ public class Invincible : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            float bgSpeed = 30f;
-            float mapSpeed = 70f;
+            float bgSpeed = 15f;
+            float mapSpeed = 15f;
             Debug.Log("±§º”¡˙¡÷ »πµÊ");
             collision.GetComponent<PlayerController>().ActiveBlast(duration, bgSpeed, mapSpeed);
 

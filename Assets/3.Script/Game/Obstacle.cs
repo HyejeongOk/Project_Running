@@ -18,9 +18,14 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if(player.isGiant || player.isBlast)
+            if (player.isGiant || player.isBlast)
             {
                 Destroy(gameObject);
+                return;
+            }
+
+            else if (player.iscrash)
+            {
                 return;
             }
 

@@ -11,7 +11,7 @@ public class Map_Spawner : MonoBehaviour
     private float TimebetSpawnMax = 2f;
    // private float TimebetSpawn;
 
-    public float spawnXpos = 20f;   //스폰할 X 위치
+    public float spawnXpos = 50f;   //스폰할 X 위치
 
     private GameObject[] Maps;
     private int currentindex = 0;
@@ -49,7 +49,14 @@ public class Map_Spawner : MonoBehaviour
             }
 
             // 다음 스폰까지 대기
-            float waitTime = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
+
+            // 광속질주 등 속도 변화에 따라 대기시간 보정
+            float baseSpeed = 5f;   // 초기 기본속도
+            float currentSpeed = GameManager.instance.mapSpeed;
+            float speedRatio = currentSpeed / baseSpeed;
+
+            float waitTime = Random.Range(TimebetSpawnMin, TimebetSpawnMax) / speedRatio;
+
             // 대기 중에도 멈춤
             float elapsed = 0f;
 

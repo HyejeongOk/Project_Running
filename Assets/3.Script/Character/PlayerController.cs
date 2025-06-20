@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;    // 땅에 닿았는가?
     private bool isJump = false;    // 점프 중인가?
     private bool isSlide = false;   //슬라이드 여부
-    private bool iscrash = false;   // 장애물 충돌 여부
 
     private bool isDead = false;
     public bool isStop = false;
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isGiant = false; //거대화인가?
     public bool isBlast = false; //광속질주인가?
+    public bool iscrash = false;   // 장애물 충돌 여부
 
     // 거대화, 광속질주
     public Coroutine Giant_co;
@@ -27,14 +27,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D player_r;
     private Animator animator;
     private AudioSource audioSource;
+    private CircleCollider2D circle;
+
+
 
     private HPBar hp;
+    private float blastY = -4.356f;
 
     private void Start()
     {
         player_r = transform.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = transform.GetComponent<AudioSource>();
+        circle = GetComponent<CircleCollider2D>();
 
         hp = FindObjectOfType<HPBar>();
 
@@ -48,6 +53,28 @@ public class PlayerController : MonoBehaviour
         if(isStop || isDead)
         {
             return;
+        }
+
+        if(isBlast)
+        {
+            // 점프 중이 아니라면 위치 고정
+            if(!isJump)
+            {
+                //바닥보다 낮게 내려가면 보정
+                if(transform.position.y < blastY)
+                {
+                    Vector3 pos = transform.position;
+                    pos.y = blastY;
+                    transform.position = pos;
+
+                    // 아래로 떨어지지 않게 y 속도만 0
+                    Vector2 vel = player_r.velocity;
+                    vel.y = 0f;
+                    player_r.velocity = vel;
+
+                }
+            }
+
         }
 
         // 슬라이드 상태
@@ -173,6 +200,8 @@ public class PlayerController : MonoBehaviour
 
         else if(collision.CompareTag("Obstacle") && !iscrash &&!isGiant && !isBlast)
         {
+            iscrash = true;
+
             Debug.Log(collision.gameObject.name);
             StartCoroutine(Crash_co());
         }
@@ -181,32 +210,37 @@ public class PlayerController : MonoBehaviour
     // 장애물 충돌
     public IEnumerator Crash_co()
     {
-        iscrash = true;
         animator.SetTrigger("Crash");
 
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        if(sprite != null)
-        {
-            float blink = 3f;
-            float interval = 0.1f;
-            float elapsed = 0f;
+        // 무적 상태 처리
+        circle.enabled = false; // 콜라이더 자체를 끔
 
-            while(elapsed < blink)
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        float duration = 5f;
+        float interval = 0.2f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            if (sprite != null)
             {
                 // 반투명
                 sprite.color = new Color(1f, 1f, 1f, 0.3f);
-                yield return new WaitForSeconds(interval);
-
-                //원래대로
-                sprite.color = new Color(1f, 1f, 1f, 1f);
-                yield return new WaitForSeconds(interval);
-
-                elapsed += blink * 2;
             }
 
-            // 마지막엔 원상복구
-            sprite.color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(interval);
+
+            if(sprite != null)
+            { 
+                //원래대로
+                sprite.color = new Color(1f, 1f, 1f, 1f);
+            }
+                yield return new WaitForSeconds(interval);
+
+                elapsed += interval * 2;
         }
+        // 마지막엔 원상복구
+        circle.enabled = true;
         iscrash = false;
     }
 
@@ -291,28 +325,24 @@ public class PlayerController : MonoBehaviour
     private IEnumerator BlastMode(float duration, float boostbg, float boostmap)
     {
         isBlast = true;
-        float bgSpeed = GameManager.instance.bgSpeed;
-        float mapSpeed = GameManager.instance.mapSpeed;
 
-        Debug.Log($"광속질주 시작 전 : {bgSpeed}");
-        Debug.Log($"광속질주 시작 전 : {GameManager.instance.bgSpeed}");
         GameManager.instance.bgSpeed = boostbg;
         GameManager.instance.mapSpeed = boostmap;
-        Debug.Log("1");
+
 
         float elapsed = 0f;
         while(elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            Debug.Log(GameManager.instance.bgSpeed);
-             Debug.Log($"광속질주! : {elapsed} / {duration}");
             yield return null;
         }
         Debug.Log("2");
 
-        GameManager.instance.bgSpeed = bgSpeed;
-        GameManager.instance.mapSpeed = mapSpeed;
+        // 원래 속도로 복구
+        GameManager.instance.bgSpeed = GameManager.instance.basicbgSpeed;
+        GameManager.instance.mapSpeed = GameManager.instance.basicmapSpeed;
         Debug.Log($"광속질주 시작 전 : {GameManager.instance.bgSpeed}");
+
         isBlast = false;
         Blast_co = null;
     }
