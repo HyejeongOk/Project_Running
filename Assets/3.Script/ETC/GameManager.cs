@@ -30,14 +30,6 @@ public class GameManager : MonoBehaviour
 
     public int Score = 0;
 
-    private void Update()
-    {
-        if (isGameover)
-        {
-            SceneManager.LoadScene(2, LoadSceneMode.Single);
-        }
-    }
-
     public void InitializeScore(Text text)
     {
         Score_txt = text;

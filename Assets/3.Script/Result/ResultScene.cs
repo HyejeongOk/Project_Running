@@ -6,7 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class ResultScene : MonoBehaviour
 {
-    public Image Ok_btn; 
+    public Text score;
+
+    private void Start()
+    {
+        resultScore();
+    }
+    public void resultScore()
+    {
+        int resultscore = GameManager.instance.Score;
+        score.text = resultscore.ToString();
+    }
 
     public void LobbyScene()
     {
