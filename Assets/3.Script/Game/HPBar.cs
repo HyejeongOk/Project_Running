@@ -48,7 +48,7 @@ public class HPBar : MonoBehaviour
         }
     }
 
-    private void Damage(int amount)
+    public void Damage(int amount)
     {
         currentHP -= amount;
         currentHP = Mathf.Clamp(currentHP, 0, MAXHP);

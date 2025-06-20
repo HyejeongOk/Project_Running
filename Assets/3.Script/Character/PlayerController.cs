@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     private bool isSlide = false;   //슬라이드 여부
     private bool iscrash = false;   // 장애물 충돌 여부
 
-    //private bool isJumpRequest = false;
-
-
     private bool isDead = false;
     public bool isStop = false;
     public bool isHPZero = false; // 체력이 0인가?
@@ -24,8 +21,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
 
-    //private BoxCollider2D boxCollider2D;
-    //private CircleCollider2D circleCollider2D;
+    private HPBar hp;
 
     private void Start()
     {
@@ -33,9 +29,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = transform.GetComponent<AudioSource>();
 
-        // 콜라이더 캐싱
-        //boxCollider2D = GetComponent<BoxCollider2D>();
-        //circleCollider2D = GetComponent<CircleCollider2D>();
+        hp = FindObjectOfType<HPBar>();
 
         isGrounded = true;
         animator.Play("Run_ingame");
@@ -132,12 +126,6 @@ public class PlayerController : MonoBehaviour
 
             isGrounded = true;
             jumpcount = 0;
-
-            // 다시 충돌 활성화
-            //if (boxCollider2D != null)
-            //{
-            //    boxCollider2D.enabled = true;
-            //}
         }
 
         // 체력이 0이고 착지했다면 사망 처리
@@ -171,6 +159,8 @@ public class PlayerController : MonoBehaviour
         // 구멍에 빠지면 게임 종료
         if (collision.CompareTag("Hole") && !isDead)
         {
+            hp.currentHP = 0;
+            HPZero();
             Die();
         }
     }
