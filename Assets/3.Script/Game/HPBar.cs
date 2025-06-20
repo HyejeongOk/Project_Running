@@ -44,7 +44,7 @@ public class HPBar : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             // 체력이 1씩 줄어듭니다...
-            Damage(30);
+            Damage(1);
         }
     }
 

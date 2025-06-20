@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameScene : MonoBehaviour
 {
@@ -32,6 +33,31 @@ public class GameScene : MonoBehaviour
         if(map == null)
         {
             map = FindObjectOfType<Map_Spawner>();
+        }
+    }
+
+    // 점프 버튼
+    public void JumpBtn()
+    {
+        if(player != null)
+        {
+            player.OnJumpButton();
+        }
+    }
+
+    public void SlideBtn()
+    {
+        if (player != null)
+        {
+            player.OnSlideButton();
+        }
+    }
+
+    public void SildeBtnExit()
+    {
+        if(player != null)
+        {
+            player.OnSlideButtonExit();
         }
     }
 
@@ -86,4 +112,17 @@ public class GameScene : MonoBehaviour
             map.SetPause(false);
         }
     }
+
+    // 그만두기 버튼
+    public void QuitBtn()
+    {
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
+    }
+
+    // 다시하기 버튼
+    public void AgainBtn()
+    {
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
+    }
+
 }
