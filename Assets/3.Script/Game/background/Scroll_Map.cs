@@ -16,7 +16,6 @@ public class Scroll_Map : MonoBehaviour
         }
 
         transform.Translate(Vector2.left * GameManager.instance.mapSpeed * Time.deltaTime);
-        Debug.Log(GameManager.instance.mapSpeed);
 
         if (transform.position.x <= destroyXpos)
         {

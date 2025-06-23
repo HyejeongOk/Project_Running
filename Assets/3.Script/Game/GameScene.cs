@@ -66,16 +66,15 @@ public class GameScene : MonoBehaviour
     {
         StopBtn.SetActive(true);
 
-        GameManager.instance.bgSpeed = 0f;
-        GameManager.instance.mapSpeed = 0f;
+        Time.timeScale = 0f;
+
+        AudioListener.pause = true;
 
         hp.StopDecreaseHP();
 
+        GameManager.instance.bgSpeed = 0f;
+        GameManager.instance.mapSpeed = 0f;
 
-        if(player != null)
-        {
-            player.SetStop(true);
-        }
 
         if(pet != null)
         {
@@ -92,15 +91,15 @@ public class GameScene : MonoBehaviour
     {
         StopBtn.SetActive(false);
 
-        GameManager.instance.bgSpeed = 10f;
-        GameManager.instance.mapSpeed = 10f;
+        Time.timeScale = 1f;
+
+        AudioListener.pause = false;
 
         hp.StartDecreaseHP();
 
-        if (player != null)
-        {
-            player.SetStop(false);
-        }
+        GameManager.instance.bgSpeed = 5f;
+        GameManager.instance.mapSpeed = 5f;
+
 
         if (pet != null)
         {
@@ -116,12 +115,20 @@ public class GameScene : MonoBehaviour
     // 그만두기 버튼
     public void QuitBtn()
     {
+        Time.timeScale = 1f;
+
+        AudioListener.pause = false;
+
         SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
     // 다시하기 버튼
     public void AgainBtn()
     {
+        Time.timeScale = 1f;
+
+        AudioListener.pause = false;
+
         SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 

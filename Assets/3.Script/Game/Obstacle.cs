@@ -24,8 +24,10 @@ public class Obstacle : MonoBehaviour
                 return;
             }
 
-            else if (player.iscrash)
+            if(player.isInvincible)
             {
+                GetComponent<BoxCollider2D>().enabled = false;
+                Debug.Log("무적상태이므로 충돌 무시");
                 return;
             }
 

@@ -101,7 +101,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cd12bde461f57ca49a79f26b1506a51e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -125,6 +125,10 @@ MonoBehaviour:
   jumpforce: 500
   isStop: 0
   isHPZero: 0
+  isGiant: 0
+  isBlast: 0
+  iscrash: 0
+  isInvincible: 0
 --- !u!50 &1864259704657585185
 Rigidbody2D:
   serializedVersion: 4
