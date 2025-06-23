@@ -169,19 +169,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnGrounded()
-    {
-        isGrounded = true;
-        animator.SetBool("Grounded", true);
-        jumpcount = 0;
-    }
-
-    public void OnLeaveGround()
-    {
-        isGrounded = false;
-        animator.SetBool("Grounded", false);
-    }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
@@ -203,6 +190,7 @@ public class PlayerController : MonoBehaviour
             iscrash = true;
 
             Debug.Log(collision.gameObject.name);
+            collision.enabled = false;
             StartCoroutine(Crash_co());
         }
     }
@@ -213,12 +201,12 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Crash");
 
         // 무적 상태 처리
-        circle.enabled = false; // 콜라이더 자체를 끔
+        //circle.enabled = false; // 콜라이더 자체를 끔
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         float duration = 5f;
         float interval = 0.2f;
-        float elapsed = 0f;
+        float elapsed = 0f; // 경과시간
 
         while (elapsed < duration)
         {
