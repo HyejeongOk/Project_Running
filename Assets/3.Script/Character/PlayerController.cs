@@ -6,6 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpforce = 100f;    // 점프 크기
 
+    //오디오
+    [SerializeField] private AudioClip Jumpclip;
+    [SerializeField] private AudioClip Slideclip;
+    [SerializeField] private AudioClip Crashclip;
+
     private int jumpcount = 0;
 
     private bool isGrounded = true;    // 땅에 닿았는가?
@@ -95,6 +100,9 @@ public class PlayerController : MonoBehaviour
     // 점프키를 누르면 점프 작동
     public void OnJumpButton()
     {
+        audioSource.clip = Jumpclip;
+        audioSource.Play();
+
         if (isStop || isDead)
         {
             return;
@@ -137,7 +145,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-
+        audioSource.clip = Slideclip;
+        audioSource.Play();
         isSlide = true;
         isJump = false;
         animator.SetBool("Sliding", true);
@@ -199,6 +208,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("충돌");
             iscrash = true;
+
+            audioSource.clip = Crashclip;
+            audioSource.Play();
 
             animator.SetTrigger("Crash");
             StartBlinkInvincible(5f);

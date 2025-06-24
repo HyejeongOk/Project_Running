@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
 {
+    [SerializeField] private AudioClip selectclip;
+
     public CharacterData characterdata;
     public Transform waitingSpawner;    // 대기씬에서 캐릭터 위치
     public Transform spawner;   // 캐릭터 선택창에서 생성 위치
@@ -20,7 +22,12 @@ public class SelectCharacter : MonoBehaviour
     private GameObject grade;
 
     private SelectManager_Chr selectchr_mgr;
+    private AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     //캐릭터 선택창 초기화
     public void Initialized(SelectManager_Chr mgr)
     {
@@ -41,6 +48,8 @@ public class SelectCharacter : MonoBehaviour
 
     public void OnSelectButtonClicked()
     {
+        audioSource.clip = selectclip;
+        audioSource.Play();
         //캐릭터 선택 메소드
         selectchr_mgr.SelectCharacter(this);
 
