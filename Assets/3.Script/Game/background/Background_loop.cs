@@ -19,4 +19,5 @@ public class Background_loop : MonoBehaviour
             transform.position = (Vector2) transform.position + offset;
         }
     }
+
 }

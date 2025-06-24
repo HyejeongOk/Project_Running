@@ -10,9 +10,11 @@ public class WaitScene : MonoBehaviour
 
     public GameObject Character_btn;
     public GameObject Pet_btn;
+    public GameObject Map_btn;
 
     private SelectManager_Chr selectchr_mgr;
     private SelectManager_Pet selectpet_mgr;
+    private SelectManager_Map selectmap_mgr;
     private AudioSource audioSource;
 
     private void Start()
@@ -56,12 +58,30 @@ public class WaitScene : MonoBehaviour
         Pet_btn.SetActive(false);
     }
 
+    // 맵 선택창 열기
+    public void OpenMapSelect()
+    {
+        audioSource.clip = btnclip;
+        audioSource.Play();
+
+        Map_btn.SetActive(true);
+    }
+
+    // 맵 선택창 끄기
+    public void CloseMapSelect()
+    {
+        audioSource.clip = btnclip;
+        audioSource.Play();
+
+        Map_btn.SetActive(false);
+    }
+
     // 게임하기
     public void OnClickPlayBtn()
     {
         if(ScrollManager.instance.selectcharacter == null || ScrollManager.instance.selectpet == null)
         {
-            Debug.Log("캐릭터랑 펫이 모두 선택되지 않았습니다.");
+            Debug.Log("캐릭터, 펫,  맵이 모두 선택되지 않았습니다.");
         }
 
         audioSource.clip = btnclip;

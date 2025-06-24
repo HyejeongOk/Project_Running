@@ -583,8 +583,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e8e2d84627195241ada261ffe55c2c0, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -752,6 +752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectcharacter: {fileID: 0}
   selectpet: {fileID: 0}
+  selectmap: {fileID: 0}
 --- !u!1 &282713631
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +797,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1642caa770dfd5444afe95d2a01f51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 282713635}
+  audioSource: {fileID: 173232912}
+  mapData: {fileID: 0}
 --- !u!61 &282713634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2469,6 +2473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1642caa770dfd5444afe95d2a01f51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 282713635}
+  audioSource: {fileID: 173232912}
+  mapData: {fileID: 0}
 --- !u!61 &1365976158
 BoxCollider2D:
   m_ObjectHideFlags: 0

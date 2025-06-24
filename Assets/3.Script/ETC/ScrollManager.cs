@@ -6,6 +6,7 @@ public class ScrollManager : MonoBehaviour
 {
     public CharacterData selectcharacter;
     public PetData selectpet;
+    public MapData selectmap;
 
     public static ScrollManager instance = null;
 
@@ -22,4 +23,6 @@ public class ScrollManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+  
 }

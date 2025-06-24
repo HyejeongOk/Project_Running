@@ -14,9 +14,9 @@ public class Map_Spawner : MonoBehaviour
     public float spawnXpos = 50f;   //스폰할 X 위치
 
     private GameObject[] Maps;
-    private int currentindex = 0;
 
     private Vector2 poolposition = new Vector2(20f, 0f);    //대기 위치
+    private GameObject LastSpawnedMap;  // 마지막으로 생성한 맵 추적
    // private float LastSpawnTime;
 
     private Coroutine spawn_co;
@@ -75,25 +75,30 @@ public class Map_Spawner : MonoBehaviour
                 continue;
             }
 
-                //맵 랜덤 변수
-                int rndindex = Random.Range(0, Map_Prefabs.Length);
-                Maps[currentindex] = Instantiate(Map_Prefabs[rndindex], new Vector2(spawnXpos, 0f), Quaternion.identity);
-
-                //Maps[currentindex].transform.position = new Vector2(spawnXpos, 0f);
-
-                // Scroll_map 스크립트 추가
-                if (Maps[currentindex].GetComponent<Scroll_Map>() == null)
+            // 이전 맵이 충분히 왼쪽으로 이동했는지 확인
+            if(LastSpawnedMap != null)
+            {
+                while(LastSpawnedMap.transform.position.x > 0f)
                 {
-                    Maps[currentindex].AddComponent<Scroll_Map>();
+                    yield return null;  // 이전 맵이 더 이동할 때까지 대기
                 }
+            }
 
-                currentindex++;
+            //맵 랜덤 변수
+            int rndindex = Random.Range(0, Map_Prefabs.Length);
+            GameObject newMap = Instantiate(Map_Prefabs[rndindex], new Vector2(spawnXpos, 0f), Quaternion.identity);
 
-                if (currentindex >= count)
-                {
-                    currentindex = 0;
-                }
+            //Maps[currentindex].transform.position = new Vector2(spawnXpos, 0f);
 
+            // Scroll_map 스크립트 추가
+            if (newMap.GetComponent<Scroll_Map>() == null)
+            {
+                newMap.AddComponent<Scroll_Map>();
+            }
+
+            LastSpawnedMap = newMap;
+
+            yield return null;
 
            
 
