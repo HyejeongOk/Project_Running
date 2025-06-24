@@ -37,8 +37,6 @@ public class Scroll_Obj : MonoBehaviour
             return;
         }
 
-        mapData = ScrollManager.instance.selectmap;
-
         transform.Translate(Vector2.left * GameManager.instance.bgSpeed * Time.deltaTime);
     }
 }

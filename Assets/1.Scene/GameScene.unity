@@ -2473,7 +2473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1642caa770dfd5444afe95d2a01f51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 282713635}
+  sprite: {fileID: 1365976159}
   audioSource: {fileID: 173232912}
   mapData: {fileID: 0}
 --- !u!61 &1365976158

@@ -53,13 +53,11 @@ public class SelectManager_Map : MonoBehaviour
             return;
         }
 
-        Debug.Log($" 맵 스프라이트 할당 : {selectedMapData.MapName}");
         // 씬 배경 스프라이트 변경
         sceneMap_img.sprite = selectedMapData.Mapobj;
 
         // 씬 맵 이름 변경
         currentMapName.text = selectedMapData.MapName;
-        Debug.Log($" 맵 스프라이트 할당 : {selectedMapData.Mapobj.name}");
     }
 
     // 씬에 선택한 맵이 곧 플레이 때 나오는 맵이 된다.
