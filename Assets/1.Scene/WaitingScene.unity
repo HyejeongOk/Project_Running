@@ -3134,6 +3134,7 @@ MonoBehaviour:
   select_btn: {fileID: 2065266120}
   check_btn: {fileID: 1627097970}
   name_txt: {fileID: 930416214}
+  select_ypos: 45
 --- !u!114 &1647330312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3330,6 +3331,7 @@ MonoBehaviour:
   select_btn: {fileID: 1529958965}
   check_btn: {fileID: 1218262185}
   name_txt: {fileID: 889376446}
+  select_ypos: 45
 --- !u!114 &1665707728
 MonoBehaviour:
   m_ObjectHideFlags: 0

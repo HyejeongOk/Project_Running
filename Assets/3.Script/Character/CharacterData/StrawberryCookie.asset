@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrawberryCookie
   m_EditorClassIdentifier: 
   CharacterName: "\uB538\uAE30\uB9DB \uCFE0\uD0A4"
-  stand_obj: {fileID: 91075272474204395, guid: 151a13a4d122b9f4fa36882b4f9f10a5, type: 3}
-  run_obj: {fileID: 8902156827550288831, guid: b309c3f74026f1547a7f49ca746a6a47, type: 3}
+  stand_obj: {fileID: 7128327866399050523, guid: 940ea099bcdada648bf5c867921521fd, type: 3}
+  run_obj: {fileID: 1357563858045802625, guid: ad3c8d8f6c24bd14eb91f01ffd632914, type: 3}
   Grade: {fileID: 1335550061986339665, guid: a90b531b7e0b61345a25d523fd4b7c5c, type: 3}
-  ingame_obj: {fileID: 2435900299779303903, guid: 64321d796c38bdc43a4aa4ac7bba345e, type: 3}
+  ingame_obj: {fileID: 2435900299779303903, guid: e658c41615e0b434793e528baab3e8a9, type: 3}

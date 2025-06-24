@@ -20,6 +20,7 @@ public class SelectCharacter : MonoBehaviour
     private GameObject stand_obj;
     private GameObject run_obj;
     private GameObject grade;
+    public float select_ypos = 45f;
 
     private SelectManager_Chr selectchr_mgr;
     private AudioSource audioSource;
@@ -36,7 +37,7 @@ public class SelectCharacter : MonoBehaviour
         //ÇÁ¸®ÆÕ »ý¼º
         grade = Instantiate(characterdata.Grade, spawner.position + new Vector3(0, -165f, 0f), Quaternion.identity, spawner);
         stand_obj = Instantiate(characterdata.stand_obj, spawner.position, Quaternion.identity, spawner);
-        run_obj = Instantiate(characterdata.run_obj, spawner.position + new Vector3(0f, 45f, 0f), Quaternion.identity, spawner);
+        run_obj = Instantiate(characterdata.run_obj, spawner.position + new Vector3(0f, select_ypos, 0f), Quaternion.identity, spawner);
 
         stand_obj.SetActive(true);
         run_obj.SetActive(false);
