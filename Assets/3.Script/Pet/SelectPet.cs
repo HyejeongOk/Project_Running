@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SelectPet : MonoBehaviour
 {
+    [SerializeField] private AudioClip selectclip;
+
     public PetData petdata;
     public Transform spawner;   // 캐릭터 생성 위치
 
@@ -18,6 +20,12 @@ public class SelectPet : MonoBehaviour
     private GameObject grade;
 
     private SelectManager_Pet selectchr_mgr;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void Initialized(SelectManager_Pet mgr)
     {
@@ -34,6 +42,9 @@ public class SelectPet : MonoBehaviour
 
     public void OnSelectButtonClicked()
     {
+        audioSource.clip = selectclip;
+        audioSource.Play();
+
         selectchr_mgr.SelectPet(this);
     }
 

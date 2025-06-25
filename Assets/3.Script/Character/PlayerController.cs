@@ -396,7 +396,13 @@ public class PlayerController : MonoBehaviour
         }
 
         isBlast = false;
+
+        if(isGiant)
+        {
+            isAbsoluteInvincible = true;
+        }
         isAbsoluteInvincible = false;
+
         if(!isGiant && !isBlinkInvincible)
         {
             StartBlinkInvincible(5f);
@@ -437,14 +443,11 @@ public class PlayerController : MonoBehaviour
 
         // 게임 오버
         StartCoroutine(GameManager.instance.Gameover_co());
-        //GameManager.instance.isGameover = true;
     }
 
     // 체력이 0이라는 정보 저장
     public void HPZero()
     {
         isHPZero = true;    // 체력 0인 상태를 저장
-    }
-
-   
+    } 
 }

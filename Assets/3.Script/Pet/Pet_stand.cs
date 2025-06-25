@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class Pet_stand : MonoBehaviour
 {
+    private Tween tween;
     // Image  UI에 움직임 애니메이션을 구현할 때
     // RectTransform을 가져온다
     // UI Image : Tween을 사용할 때 DoAnchorPos
@@ -13,8 +14,17 @@ public class Pet_stand : MonoBehaviour
    private void Start()
     {
         RectTransform rect = GetComponent<RectTransform>();
-        rect.DOAnchorPosY(rect.anchoredPosition.y - 45f, 1f)
+        tween = rect.DOAnchorPosY(rect.anchoredPosition.y - 45f, 1f)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
+    }
+
+    // Tween 예외처리
+    private void OnDestroy()
+    {
+        if(tween != null && tween.IsActive())
+        {
+            tween.Kill();   //DoTween 트윈을 안전하게 종료
+        }
     }
 }
