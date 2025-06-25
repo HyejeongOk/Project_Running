@@ -14,4 +14,7 @@ public class CharacterData : ScriptableObject
 
     [Header("인게임")]
     public GameObject ingame_obj;
+
+    [Header("로비씬")]
+    public GameObject Lobby_obj;
 }
