@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
+  GiantClip: {fileID: 8300000, guid: 820ad9cdb0c0dbc4f8f42d741ac4b7a7, type: 3}
 --- !u!58 &4227401490731731677
 CircleCollider2D:
   m_ObjectHideFlags: 0

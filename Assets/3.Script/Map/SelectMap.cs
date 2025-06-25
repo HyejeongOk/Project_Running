@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SelectMap : MonoBehaviour
 {
     public MapData mapdata;
+    public AudioClip checkClip;
 
     [Header("선택하기 버튼")]
     public Image select_btn;    //선택하기
@@ -16,6 +17,12 @@ public class SelectMap : MonoBehaviour
     public Image Previewbg;
 
     private SelectManager_Map selectmap_mgr;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void Initialized(SelectManager_Map mgr)
     {
@@ -28,6 +35,9 @@ public class SelectMap : MonoBehaviour
 
     public void OnSelectButtonClicked()
     {
+        audioSource.clip = checkClip;
+        audioSource.Play();
+
         selectmap_mgr.SelectMap(this);
     }
 

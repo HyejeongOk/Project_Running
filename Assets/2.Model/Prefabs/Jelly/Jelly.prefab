@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 10
+  jellyClip: {fileID: 8300000, guid: 08917da30a9157947909a9048dec52d4, type: 3}

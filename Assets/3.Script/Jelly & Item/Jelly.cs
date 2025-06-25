@@ -5,6 +5,7 @@ using UnityEngine;
 public class Jelly : MonoBehaviour
 {
     public int score = 10;
+    public AudioClip jellyClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +13,7 @@ public class Jelly : MonoBehaviour
         {
             GameManager.instance.AddScore(score);
             Destroy(gameObject);
+            SFX.SoundPlay(jellyClip);
         }
     }
 }

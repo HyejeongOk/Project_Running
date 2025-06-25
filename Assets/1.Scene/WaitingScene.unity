@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapdata: {fileID: 11400000, guid: f6d2c91863bb4614789cbff30a408a51, type: 2}
+  checkClip: {fileID: 8300000, guid: 53e9a80ce4e9a7e478ef235c3b1db90f, type: 3}
   select_btn: {fileID: 1524587505}
   check_btn: {fileID: 1352446308}
   name_txt: {fileID: 921652286}
@@ -1960,6 +1961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapdata: {fileID: 11400000, guid: b00e454045b77b44696e35279af4dcb3, type: 2}
+  checkClip: {fileID: 8300000, guid: 53e9a80ce4e9a7e478ef235c3b1db90f, type: 3}
   select_btn: {fileID: 2046615224}
   check_btn: {fileID: 327429302}
   name_txt: {fileID: 630211423}

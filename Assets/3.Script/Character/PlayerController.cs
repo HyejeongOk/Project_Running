@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -119,11 +120,6 @@ public class PlayerController : MonoBehaviour
             player_r.velocity = new Vector2(player_r.velocity.x, 0f);
             player_r.AddForce(new Vector2(0, jumpforce));
 
-            //if(boxCollider2D !=  null)
-            //{
-            //    boxCollider2D.enabled = false;
-            //}
-
             if (jumpcount ==1)
             {
                 animator.SetBool("Jumping", true);
@@ -187,7 +183,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
     }
 
-    // 구멍에 빠졌을 때와 장애물에 충돌할 때 
+    // 구멍에 빠졌을 때와 장애물에 충돌할 때 , 젤리 획득
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 구멍에 빠지면 게임 종료
@@ -204,7 +200,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        else if(collision.CompareTag("Obstacle") && !iscrash &&!isGiant && !isBlast && !isInvincible)
+        else if (collision.CompareTag("Obstacle") && !iscrash && !isGiant && !isBlast && !isInvincible)
         {
             Debug.Log("충돌");
             iscrash = true;
@@ -216,21 +212,6 @@ public class PlayerController : MonoBehaviour
             StartBlinkInvincible(5f);
         }
     }
-
-    // 무적 시작 코루틴 저장
-    //public void StartInvincible_co(float duration = 5f)
-    //{
-    //    if(GameManager.instance.isGameover)
-    //    {
-    //        return;
-    //    }
-
-    //    if(Blink_co!= null)
-    //    {
-    //        StopCoroutine(Blink_co);
-    //    }
-    //    Blink_co = StartCoroutine(Invincible_co(duration));
-    //}
 
     private void StartBlinkInvincible(float duration)
     {
@@ -318,7 +299,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator GiantMode(float duration)
     {
         isGiant = true;
-        transform.localScale = new Vector3(2f, 2f, 2f);
+        transform.DOScale(2f, 1f);
 
         float elapsed = 0f;
         while (elapsed < duration)

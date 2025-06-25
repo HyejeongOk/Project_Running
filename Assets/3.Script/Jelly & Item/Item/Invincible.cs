@@ -5,6 +5,7 @@ using UnityEngine;
 public class Invincible : MonoBehaviour
 {
     public float duration = 1f;
+    public AudioClip BlastClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +17,7 @@ public class Invincible : MonoBehaviour
             collision.GetComponent<PlayerController>().ActiveBlast(duration, bgSpeed, mapSpeed);
 
             Destroy(gameObject);
+            SFX.SoundPlay(BlastClip);
         }
     }
 }

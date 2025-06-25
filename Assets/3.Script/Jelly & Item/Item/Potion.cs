@@ -5,6 +5,7 @@ using UnityEngine;
 public class Potion : MonoBehaviour
 {
     public int amount = 5;
+    public AudioClip Hpclip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +19,8 @@ public class Potion : MonoBehaviour
 
             }
             Destroy(gameObject);
+            SFX.SoundPlay(Hpclip);
+
         }
     }
 }

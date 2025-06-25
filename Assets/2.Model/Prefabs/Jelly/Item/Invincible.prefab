@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56346d55255e117428ab6651cb46e33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 5
+  BlastClip: {fileID: 8300000, guid: ab0b9ea1a01aea240a32d013eaaabc45, type: 3}

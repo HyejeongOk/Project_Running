@@ -5,6 +5,7 @@ using UnityEngine;
 public class Giant : MonoBehaviour
 {
     public float duration = 5f;
+    public AudioClip GiantClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +14,7 @@ public class Giant : MonoBehaviour
             collision.GetComponent<PlayerController>().ActiveGiant(duration);
 
             Destroy(gameObject);
+            SFX.SoundPlay(GiantClip);
         }
     }
 
