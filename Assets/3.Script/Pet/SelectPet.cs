@@ -18,6 +18,7 @@ public class SelectPet : MonoBehaviour
     public Text name_txt;
     private GameObject pet_obj;
     private GameObject grade;
+    public float GradeY = -165f;
 
     private SelectManager_Pet selectchr_mgr;
     private AudioSource audioSource;
@@ -32,7 +33,7 @@ public class SelectPet : MonoBehaviour
         selectchr_mgr = mgr;
 
         //ÇÁ¸®ÆÕ »ý¼º
-        grade = Instantiate(petdata.Grade, spawner.position + new Vector3(0, -165f, 0f), Quaternion.identity, spawner);
+        grade = Instantiate(petdata.Grade, spawner.position + new Vector3(0, GradeY, 0f), Quaternion.identity, spawner);
         pet_obj = Instantiate(petdata.Pet_obj, spawner.position, Quaternion.identity, spawner);
 
         check_btn.gameObject.SetActive(false);

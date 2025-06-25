@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PetName: "\uAF43\uBD09\uC624\uB9AC"
   Pet_obj: {fileID: 4608440999742567377, guid: 2bc46239b7a046b419d4625d0961ffba, type: 3}
-  Grade: {fileID: 5888122594473350354, guid: 6581c2becb838e246890b0a6d583fdf3, type: 3}
+  Grade: {fileID: 4861830616956301630, guid: 84188e4a5e7b5c8409902452eecb67a3, type: 3}
   ingame_obj: {fileID: 4668196686862124512, guid: 6351f2771ed09194c9c6bf27cdc5ff9d, type: 3}

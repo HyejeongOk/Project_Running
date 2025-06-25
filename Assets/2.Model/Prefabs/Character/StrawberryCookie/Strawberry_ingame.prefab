@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 827703763615758974}
   - component: {fileID: 7362150040447175213}
   - component: {fileID: -1864518700545094972}
+  - component: {fileID: 1867955281856750570}
   m_Layer: 0
   m_Name: Strawberry_ingame
   m_TagString: Player
@@ -337,3 +338,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1867955281856750570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435900299779303903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb81e2856b924b4aa0c8fd14b2a6460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jelly: {fileID: 8905793364463853994, guid: 740062a883720b5468257db8627648d3, type: 3}
+  spawner: 15
+  interval: 5
+  player: {fileID: 462209365827830302}
+  AttractDist: 8
+  AttractSpeed: 5
