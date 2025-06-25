@@ -71,21 +71,21 @@ public class PlayerController : MonoBehaviour
             // 점프 중이 아니라면 위치 고정
             if(!isJump)
             {
-                //바닥보다 낮게 내려가면 보정
-                if(transform.position.y < blastY)
-                {
-                    Vector3 pos = transform.position;
-                    pos.y = blastY;
-                    transform.position = pos;
-
-                    // 아래로 떨어지지 않게 y 속도만 0
-                    Vector2 vel = player_r.velocity;
-                    vel.y = 0f;
-                    player_r.velocity = vel;
-
-                }
+                CrossHole();
             }
+        }
 
+        if (isJump && isBlast)
+        {
+            // 구름 다리를 걷는 함수
+            CrossHole();
+
+            // 점프 해제
+            isJump = false;
+            isGrounded = true;
+            jumpcount = 0;
+            animator.SetBool("Landing", true);
+            return;
         }
 
         // 슬라이드 상태
@@ -96,6 +96,24 @@ public class PlayerController : MonoBehaviour
 
         // Grounded 상태
         animator.SetBool("Grounded", isGrounded);
+    }
+
+    // 구멍에 떨어지지 않게 -> 구름다리 걷는 것처럼
+    public void CrossHole()
+    {
+        //바닥보다 낮게 내려가면 보정
+        if (transform.position.y < blastY)
+        {
+            Vector3 pos = transform.position;
+            pos.y = blastY;
+            transform.position = pos;
+
+            // 아래로 떨어지지 않게 y 속도만 0
+            Vector2 vel = player_r.velocity;
+            vel.y = 0f;
+            player_r.velocity = vel;
+
+        }
     }
 
     // 점프키를 누르면 점프 작동
@@ -325,7 +343,7 @@ public class PlayerController : MonoBehaviour
         //StartInvincible_co();   // 무적 새로 시작
 
         Giant_co = null;
-        transform.localScale = new Vector3(1f, 1f, 1f);
+        transform.DOScale(1f, 1f);
     }
 
     // 광속질주 아이템 확득 시 속력 커짐
@@ -390,33 +408,6 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.mapSpeed = GameManager.instance.basicmapSpeed;
         Debug.Log($"광속질주 시작 전 : {GameManager.instance.bgSpeed}");
 
-
-        // 거대화 중이 아니면 무적처리
-        //if (!isGiant)
-        //{
-        //    StartInvincible_co();
-        //}
-
-        //else 
-        //{
-        //    isstopInvincible = false;   //일시정지 해제
-        //    // 거대화 중이면 무적 코루틴이 켜저 있으면 종료하거나 무적 처리 초기화
-        //    if (Invincibleco != null)
-        //    {
-        //        StopCoroutine(Invincibleco);
-        //        Invincibleco = null;
-        //        ResetPlayerAlpha();
-        //        isInvincible = false;   //일시정지 해제
-        //        invincibleelapsed = 0f;
-        //    }
-        //}
-
-        // 무적 코루틴 새로 시작
-        //if (!isGiant && !iscrash && !isInvincible)
-        //{
-        //    StartInvincible_co();
-        //}
-
     }
     #endregion
 
@@ -430,80 +421,6 @@ public class PlayerController : MonoBehaviour
             sprite.color = new Color(1f, 1f, 1f, 1f);   // 완전 불투명
         }
     }
-
-    //private void CheckInvincibleEnd()
-    //{
-    //    if(!isGiant && !isBlast)
-    //    {
-    //        StartInvincible_co();   // 깜빡임 무적 시작
-    //    }    
-    //}
-
-    // 깜빡임 강제 중단
-    //private void StopBlink()
-    //{
-    //    if(Invincibleco != null)
-    //    {
-    //        StopCoroutine(Invincibleco);
-    //        Invincibleco = null;
-    //    }
-    //    ResetPlayerAlpha();
-    //}
-
-    //// 무적 처리
-    //public IEnumerator Invincible_co(float duration)
-    //{
-    //    Debug.Log("무적");
-    //    isInvincible = true;
-    //    invincibletime = duration;
-    //    invincibleelapsed = 0f;
-
-    //    SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-    //    float interval = 0.2f;
-
-    //    while (invincibleelapsed < invincibletime)
-    //    {
-    //        if(PauseManager.instance.IsPaused() || isstopInvincible || isStop)
-    //        {
-    //            yield return null;
-    //            continue;
-    //        }
-
-    //        // 깜빡임 
-    //        if (sprite != null)
-    //        {
-    //            // 반투명
-    //            sprite.color = new Color(1f, 1f, 1f, 0.3f);
-    //            Debug.Log("1. 반투명");
-    //        }
-
-    //        yield return new WaitForSeconds(interval);
-
-    //        if (PauseManager.instance.IsPaused() || isstopInvincible || isStop)
-    //        {
-    //            yield return null;
-    //            continue;
-    //        }
-
-    //        if (sprite != null)
-    //        {
-    //            //원래대로
-    //            sprite.color = new Color(1f, 1f, 1f, 1f);
-    //            Debug.Log("2. 원래대로");
-    //        }
-    //        yield return new WaitForSeconds(interval);
-
-    //        invincibleelapsed += interval * 2;
-    //    }
-    //    // 마지막엔 원상복구 -> 무적종료
-    //    ResetPlayerAlpha();
-
-    //    isInvincible = false;
-    //    Invincibleco = null;
-    //    invincibleelapsed = 0f;
-    //    isstopInvincible = false;
-    //    iscrash = false;
-    //}
 
     // 플레이어 사망
     public void Die()

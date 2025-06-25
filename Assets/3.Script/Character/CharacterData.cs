@@ -17,4 +17,5 @@ public class CharacterData : ScriptableObject
 
     [Header("·Îºñ¾À")]
     public GameObject Lobby_obj;
+    public string CharacterID;
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   Grade: {fileID: 1335550061986339665, guid: a90b531b7e0b61345a25d523fd4b7c5c, type: 3}
   ingame_obj: {fileID: 2435900299779303903, guid: 64321d796c38bdc43a4aa4ac7bba345e, type: 3}
   Lobby_obj: {fileID: 3436809186296712494, guid: c6b3a412fb2df4c478a96d72586759c2, type: 3}
+  CharacterID: Brave

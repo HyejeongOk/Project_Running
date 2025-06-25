@@ -18,3 +18,4 @@ MonoBehaviour:
   Grade: {fileID: 1335550061986339665, guid: a90b531b7e0b61345a25d523fd4b7c5c, type: 3}
   ingame_obj: {fileID: 2435900299779303903, guid: e658c41615e0b434793e528baab3e8a9, type: 3}
   Lobby_obj: {fileID: 6739220707111168467, guid: f81eb32fb007504458bbd7c0be8f60c6, type: 3}
+  CharacterID: Strawberry
