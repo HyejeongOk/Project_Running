@@ -105,40 +105,6 @@ public class Map_Spawner : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    if(isPause)
-    //    {
-    //        return;
-    //    }
-
-    //    if (Time.time >= LastSpawnTime + TimebetSpawn)
-    //    {
-    //        LastSpawnTime = Time.time;  // 마지막에 스폰한 시간
-    //        TimebetSpawn = Random.Range(TimebetSpawnMin, TimebetSpawnMax);
-            
-    //        //맵 랜덤 변수
-    //        int rndindex = Random.Range(0, Map_Prefabs.Length);
-    //        Maps[currentindex] = Instantiate(Map_Prefabs[rndindex], new Vector2(spawnXpos, 0f), Quaternion.identity);
-
-    //        Maps[currentindex].transform.position = new Vector2(spawnXpos, 0f);
-
-    //        // Scroll_map 스크립트 추가
-    //        if(Maps[currentindex].GetComponent<Scroll_Map>() == null)
-    //        {
-    //            Maps[currentindex].AddComponent<Scroll_Map>();
-    //        }
-
-    //        currentindex++;
-
-    //        if (currentindex >= count)
-    //        {
-    //            currentindex = 0;
-    //        }
-
-    //    }
-    //}
-
     public void SetPause(bool pause)
     {
         isPause = pause;

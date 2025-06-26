@@ -56,8 +56,7 @@ public class HPBar : MonoBehaviour
 
         if(currentHP <= 0)
         {
-            player.HPZero();
-            Debug.Log("게임오버");
+            player.HPZero();    //체력이 0이면 게임 오버
         }
     }
 

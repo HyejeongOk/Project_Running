@@ -13,7 +13,6 @@ public class Invincible : MonoBehaviour
         {
             float bgSpeed = 15f;
             float mapSpeed = 15f;
-            Debug.Log("±§º”¡˙¡÷ »πµÊ");
             collision.GetComponent<PlayerController>().ActiveBlast(duration, bgSpeed, mapSpeed);
 
             Destroy(gameObject);

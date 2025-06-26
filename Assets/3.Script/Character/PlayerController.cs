@@ -36,9 +36,6 @@ public class PlayerController : MonoBehaviour
     public Coroutine Blast_co;  // 광속질주 코루틴
     public Coroutine Blink_co;  // 깜빡임 코루틴
 
-    //무적 코루틴
-    //public Coroutine Invincibleco = null; // 무적 코루틴
-
     private Rigidbody2D player_r;
     private Animator animator;
     private AudioSource audioSource;
@@ -268,7 +265,6 @@ public class PlayerController : MonoBehaviour
             {
                 // 반투명
                 sprite.color = new Color(1f, 1f, 1f, 0.3f);
-                Debug.Log("1. 반투명");
             }
 
             yield return new WaitForSeconds(interval);
@@ -277,7 +273,6 @@ public class PlayerController : MonoBehaviour
             {
                 //원래대로
                 sprite.color = new Color(1f, 1f, 1f, 1f);
-                Debug.Log("2. 원래대로");
             }
             yield return new WaitForSeconds(interval);
 
@@ -412,7 +407,6 @@ public class PlayerController : MonoBehaviour
         // 원래 속도로 복구
         GameManager.instance.bgSpeed = GameManager.instance.basicbgSpeed;
         GameManager.instance.mapSpeed = GameManager.instance.basicmapSpeed;
-        Debug.Log($"광속질주 시작 전 : {GameManager.instance.bgSpeed}");
 
     }
     #endregion
@@ -431,6 +425,8 @@ public class PlayerController : MonoBehaviour
     // 플레이어 사망
     public void Die()
     {
+        transform.DOKill(); // 실행 중인 tween 안전하게 제거
+
         // 플레이어 사망 애니메이션 출력
         animator.SetTrigger("Die");
 

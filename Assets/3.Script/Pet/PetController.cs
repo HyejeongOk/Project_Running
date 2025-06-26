@@ -6,6 +6,7 @@ public class PetController : MonoBehaviour
 {
     public Transform character; // 따라갈 캐릭터
     private Vector3 petPos;  // 캐릭터로부터 떨어진 거리 (초기 생성 위치)
+    public Vector3 targetPos;   // 목적지
 
     private Animator animator;
 
@@ -18,12 +19,16 @@ public class PetController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(character == null)
+        if(character == null || isStop)
         {
             return;
         }
 
-        transform.position = character.position + petPos;
+        targetPos = character.position + petPos;
+
+        transform.position = new Vector3(targetPos.x,
+            targetPos.y,
+            transform.position.z);
     }
 
     public void SetTarget(Transform target, Vector3 Spawnpos)
