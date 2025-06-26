@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab53463b6de79f54191f725dd622f960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 20
+  score: 10
   jellyClip: {fileID: 8300000, guid: 0ea4e98d91c09aa4bb274b5018ab5d19, type: 3}
 --- !u!50 &6086617949866666611
 Rigidbody2D:

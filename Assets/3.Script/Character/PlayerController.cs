@@ -63,35 +63,30 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (isBlast || isInvincible)
+        if ((isBlast || isInvincible) && transform.position.y < blastY)
         {
-            // 점프 중이 아니라면 위치 고정
-            if(!isJump)
-            {
-                CrossHole();
-            }
-        }
-
-        if (isJump && isBlast)
-        {
-            // 구름 다리를 걷는 함수
             CrossHole();
-
-            // 점프 해제
-            isJump = false;
-            isGrounded = true;
-            jumpcount = 0;
-            return;
+            // 점프 중이 아니라면 위치 고정
+            //if(!isJump)
+            //{
+            //    CrossHole();
+            //}
         }
+
+        //if (isBlast)
+        //{
+        //    // 구름 다리를 걷는 함수
+        //    CrossHole();
+        //}
 
         // 슬라이드 상태
         animator.SetBool("Sliding", isSlide);
-
         // 공중에 있지만 점프를 누르지 않았을 때
         animator.SetBool("Jumping", !isGrounded && isJump);
 
         // Grounded 상태
         animator.SetBool("Grounded", isGrounded);
+
     }
 
     // 구멍에 떨어지지 않게 -> 구름다리 걷는 것처럼
@@ -109,6 +104,14 @@ public class PlayerController : MonoBehaviour
             vel.y = 0f;
             player_r.velocity = vel;
 
+            if((isBlast || isBlinkInvincible) && isJump)
+            {
+                isGrounded = true;
+                isJump = false;
+                jumpcount = 0;
+                animator.SetBool("Grounded", true);
+                animator.SetBool("Jumping", false);
+            }
         }
     }
 
@@ -143,8 +146,6 @@ public class PlayerController : MonoBehaviour
             // 2단 점프
             if(jumpcount == 2)
             {
-                animator.SetBool("Jumping", true);
-                animator.SetBool("Grounded", false);
                 animator.SetTrigger("DoubleJump");
             }
         }

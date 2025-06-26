@@ -5,7 +5,7 @@ using UnityEngine;
 public class PetController : MonoBehaviour
 {
     public Transform character; // 따라갈 캐릭터
-    private Vector3 petPos;  // 캐릭터로부터 떨어진 거리 (초기 생성 위치)
+    public Vector3 petPos;  // 캐릭터로부터 떨어진 거리 (초기 생성 위치)
     public Vector3 targetPos;   // 목적지
 
     private Animator animator;
@@ -24,11 +24,11 @@ public class PetController : MonoBehaviour
             return;
         }
 
+        Debug.Log(petPos);
         targetPos = character.position + petPos;
 
-        transform.position = new Vector3(targetPos.x,
-            targetPos.y,
-            transform.position.z);
+        float speed = 5f;
+        transform.position = Vector2.Lerp(transform.position, targetPos, speed * Time.deltaTime);
     }
 
     public void SetTarget(Transform target, Vector3 Spawnpos)
@@ -38,7 +38,7 @@ public class PetController : MonoBehaviour
         // 캐릭터와 펫 스폰 위치 거리 계산
         petPos = Spawnpos - target.position;
     }
-
+    
     public void SetStop(bool stop)
     {
         isStop = stop;

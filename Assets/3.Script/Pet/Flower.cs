@@ -10,9 +10,6 @@ public class Flower : MonoBehaviour
     public float interval = 10f;    //주기
     public float destination = 8f;
 
-    //Vector3 jellySpawn = controller != null ?
-    //    controller.targetPos + Vector3.right * destination : transform.position + Vector3.right * destination;
-
     private Vector2 StartPos;
     private Vector2 TargetPos;
     public bool isMoving = false;
@@ -31,6 +28,10 @@ public class Flower : MonoBehaviour
     {
         while(true)
         {
+            if(GameManager.instance.isGameover)
+            {
+                yield break;
+            }
 
             if(!isMoving)
             {
@@ -58,8 +59,12 @@ public class Flower : MonoBehaviour
         yield return StartCoroutine(MoveOverTime(StartPos, TargetPos, moveduration));
         GameObject obj = Instantiate(flowerjelly, TargetPos, Quaternion.identity);
 
+        if(controller != null && controller.character != null)
+        {
+            Vector3 characterback = controller.character.position + controller.petPos;
+            yield return StartCoroutine(MoveOverTime(TargetPos, characterback, moveduration));
+        }
         //제자리로 
-        yield return StartCoroutine(MoveOverTime(TargetPos, StartPos, moveduration));
         if (controller != null)
         {
             controller.SetStop(false);

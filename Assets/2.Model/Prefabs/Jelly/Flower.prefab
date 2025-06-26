@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab53463b6de79f54191f725dd622f960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 15
+  score: 5
   jellyClip: {fileID: 8300000, guid: 53e9a80ce4e9a7e478ef235c3b1db90f, type: 3}
 --- !u!58 &5538390435636757568
 CircleCollider2D:

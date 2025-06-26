@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6172669390065992544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowerjelly: {fileID: 5709979224760612541, guid: fc40a304960d0cb43b523e3d07c692b0, type: 3}
-  moveduration: 0.2
-  waittime: 0.5
+  moveduration: 0.5
   interval: 3
+  destination: 8
   isMoving: 0
