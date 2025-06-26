@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
             isJump = false;
             isGrounded = true;
             jumpcount = 0;
-            animator.SetBool("Landing", true);
             return;
         }
 
@@ -116,8 +115,6 @@ public class PlayerController : MonoBehaviour
     // 점프키를 누르면 점프 작동
     public void OnJumpButton()
     {
-        audioSource.clip = Jumpclip;
-        audioSource.Play();
 
         if (isStop || isDead)
         {
@@ -126,6 +123,8 @@ public class PlayerController : MonoBehaviour
 
         if(jumpcount < 2)
         {
+            audioSource.clip = Jumpclip;
+            audioSource.Play();
             jumpcount++;
             isJump = true;
 
@@ -144,6 +143,8 @@ public class PlayerController : MonoBehaviour
             // 2단 점프
             if(jumpcount == 2)
             {
+                animator.SetBool("Jumping", true);
+                animator.SetBool("Grounded", false);
                 animator.SetTrigger("DoubleJump");
             }
         }
@@ -166,7 +167,6 @@ public class PlayerController : MonoBehaviour
     public void OnSlideButtonExit()
     {
         isSlide = false;
-        animator.SetBool("Landing", true);
     }
 
     // 땅에 닿았는가?
@@ -176,13 +176,9 @@ public class PlayerController : MonoBehaviour
         // 어떤 콜라이더에 닿았으며, 충돌 표면이 위쪽을 보고 있다면
         if (collision.contacts[0].normal.y > 0.1f)
         {
-            if(!isGrounded)
-            {
-                animator.SetBool("Landing", true);
-                isJump = false; // 점프 키 눌렀던 것 초기화
-            }
-
+            isJump = false; 
             isGrounded = true;
+
             jumpcount = 0;
         }
 
@@ -217,7 +213,6 @@ public class PlayerController : MonoBehaviour
 
         else if (collision.CompareTag("Obstacle") && !iscrash && !isGiant && !isBlast && !isInvincible)
         {
-            Debug.Log("충돌");
             iscrash = true;
 
             audioSource.clip = Crashclip;

@@ -354,5 +354,5 @@ MonoBehaviour:
   spawner: 15
   interval: 5
   player: {fileID: 462209365827830302}
-  AttractDist: 8
-  AttractSpeed: 5
+  AttractDist: 3
+  AttractSpeed: 20
