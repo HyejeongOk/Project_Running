@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("점프 정보")]
     [SerializeField] private float jumpforce = 100f;    // 점프 크기
+    private int jumpcount = 0;
 
-    //오디오
+    [Header("AudioClip")]
     [SerializeField] private AudioClip Jumpclip;
     [SerializeField] private AudioClip Slideclip;
     [SerializeField] private AudioClip Crashclip;
 
-    private int jumpcount = 0;
-
+    
     private bool isGrounded = true;    // 땅에 닿았는가?
     private bool isJump = false;    // 점프 중인가?
     private bool isSlide = false;   //슬라이드 여부
@@ -22,16 +23,17 @@ public class PlayerController : MonoBehaviour
     public bool isStop = false;
     public bool isHPZero = false; // 체력이 0인가?
 
+    [Header("아이템 진행 중")]
     public bool isGiant = false; //거대화인가?
     public bool isBlast = false; //광속질주인가?
     public bool iscrash = false;   // 장애물 충돌 여부
 
-    // 무적 상태
+    [Header("무적상태 여부")]
     public bool isAbsoluteInvincible = false;  //광속질주 / 거대화 무적
     public bool isBlinkInvincible = false; // 깜빡임 무적
     public bool isInvincible => isAbsoluteInvincible || isBlinkInvincible;
 
-    // 거대화, 광속질주 코루틴
+    [Header("Coroutine")]
     public Coroutine Giant_co;  // 거대화 코루틴
     public Coroutine Blast_co;  // 광속질주 코루틴
     public Coroutine Blink_co;  // 깜빡임 코루틴
@@ -66,27 +68,16 @@ public class PlayerController : MonoBehaviour
         if ((isBlast || isInvincible) && transform.position.y < blastY)
         {
             CrossHole();
-            // 점프 중이 아니라면 위치 고정
-            //if(!isJump)
-            //{
-            //    CrossHole();
-            //}
         }
-
-        //if (isBlast)
-        //{
-        //    // 구름 다리를 걷는 함수
-        //    CrossHole();
-        //}
 
         // 슬라이드 상태
         animator.SetBool("Sliding", isSlide);
+
         // 공중에 있지만 점프를 누르지 않았을 때
         animator.SetBool("Jumping", !isGrounded && isJump);
 
         // Grounded 상태
         animator.SetBool("Grounded", isGrounded);
-
     }
 
     // 구멍에 떨어지지 않게 -> 구름다리 걷는 것처럼
@@ -291,8 +282,6 @@ public class PlayerController : MonoBehaviour
             Blink_co = null;
             isBlinkInvincible = false;
             ResetPlayerAlpha();
-            //경과시간 초기화
-            //invincibleelapsed = 0f;
         }
 
         isAbsoluteInvincible = true;    // 거대화로 인한 무적 (광속질주 시 광속질주로 인한 무적)
@@ -322,16 +311,13 @@ public class PlayerController : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        //yield return new WaitForSeconds(duration);
+
         isGiant = false;
         isAbsoluteInvincible = false;
         if (!isBlast && !isBlinkInvincible)
         {
             StartBlinkInvincible(5f);
         }
-
-        //isstopInvincible = false;   //일시정지 해제
-        //StartInvincible_co();   // 무적 새로 시작
 
         Giant_co = null;
         transform.DOScale(1f, 1f);
@@ -340,7 +326,7 @@ public class PlayerController : MonoBehaviour
     // 광속질주 아이템 확득 시 속력 커짐
     public void ActiveBlast(float duration, float boostbg, float boostmap)
     {
-     if(Blink_co != null)
+        if(Blink_co != null)
         {
             StopCoroutine(Blink_co);
             Blink_co = null;
@@ -354,7 +340,6 @@ public class PlayerController : MonoBehaviour
         {
             // 이전 광속질주 코루틴 종료
             StopCoroutine(Blast_co);
-            //Blast_co = null;
         }
 
         Blast_co = StartCoroutine(BlastMode(duration, boostbg, boostmap));
@@ -441,5 +426,5 @@ public class PlayerController : MonoBehaviour
     public void HPZero()
     {
         isHPZero = true;    // 체력 0인 상태를 저장
-    } 
+    }
 }

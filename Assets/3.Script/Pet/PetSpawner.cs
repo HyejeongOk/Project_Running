@@ -13,7 +13,7 @@ public class PetSpawner : MonoBehaviour
             Debug.Log("선택된 펫이 없습니다.");
         }
         GameObject pet = Instantiate(ScrollManager.instance.selectpet.ingame_obj,
-            petSpawner.position, Quaternion.identity);
+            petSpawner.position, Quaternion.identity, petSpawner);
 
         //Player 태그가 붙은 캐릭터 찾기
         GameObject player = GameObject.FindGameObjectWithTag("Player");

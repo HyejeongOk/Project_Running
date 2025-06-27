@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5086436882348772926}
   - component: {fileID: 1737071983629491940}
-  - component: {fileID: 8528406739736569269}
   - component: {fileID: 5538390435636757568}
   - component: {fileID: -3108039239945329177}
   - component: {fileID: -8655903448864953812}
+  - component: {fileID: 6160917050049503136}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Jelly
@@ -88,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8528406739736569269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5709979224760612541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab53463b6de79f54191f725dd622f960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 5
-  jellyClip: {fileID: 8300000, guid: 53e9a80ce4e9a7e478ef235c3b1db90f, type: 3}
 --- !u!58 &5538390435636757568
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -177,3 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyXpos: -30
+--- !u!114 &6160917050049503136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709979224760612541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1388a0b5ad46c0d42b28a57c8d440ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 5
+  jellyClip: {fileID: 8300000, guid: 53e9a80ce4e9a7e478ef235c3b1db90f, type: 3}
+  AttractDist: 5
+  AttractSpeed: 3

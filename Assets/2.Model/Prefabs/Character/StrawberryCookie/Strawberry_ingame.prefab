@@ -135,6 +135,8 @@ MonoBehaviour:
   iscrash: 0
   isAbsoluteInvincible: 0
   isBlinkInvincible: 0
+  AttractDist: 5
+  AttractSpeed: 10
 --- !u!50 &1864259704657585185
 Rigidbody2D:
   serializedVersion: 4
@@ -353,6 +355,3 @@ MonoBehaviour:
   jelly: {fileID: 8905793364463853994, guid: 740062a883720b5468257db8627648d3, type: 3}
   spawner: 15
   interval: 5
-  player: {fileID: 462209365827830302}
-  AttractDist: 3
-  AttractSpeed: 20

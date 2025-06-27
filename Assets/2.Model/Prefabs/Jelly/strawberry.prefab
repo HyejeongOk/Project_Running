@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4971649568617064789}
   - component: {fileID: 5992620547135733789}
   - component: {fileID: 5353769525367758168}
-  - component: {fileID: 1995354717373120745}
   - component: {fileID: 6086617949866666611}
   - component: {fileID: 7192137213282414501}
+  - component: {fileID: 2997292704189020140}
   m_Layer: 0
   m_Name: strawberry
   m_TagString: Jelly
@@ -123,20 +123,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.33
---- !u!114 &1995354717373120745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905793364463853994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab53463b6de79f54191f725dd622f960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 10
-  jellyClip: {fileID: 8300000, guid: 0ea4e98d91c09aa4bb274b5018ab5d19, type: 3}
 --- !u!50 &6086617949866666611
 Rigidbody2D:
   serializedVersion: 4
@@ -177,3 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyXpos: -30
+--- !u!114 &2997292704189020140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905793364463853994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1388a0b5ad46c0d42b28a57c8d440ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 10
+  jellyClip: {fileID: 8300000, guid: 0ea4e98d91c09aa4bb274b5018ab5d19, type: 3}
+  AttractDist: 5
+  AttractSpeed: 10

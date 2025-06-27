@@ -20,7 +20,6 @@ public class Jelly : MonoBehaviour
         {
             iscollected = true;
             GameManager.instance.AddScore(score);
-            Debug.Log($"Á©¸®È¹µæ : {score}");
             Destroy(gameObject);
             SFX.SoundPlay(jellyClip);
         }

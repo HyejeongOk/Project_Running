@@ -23,8 +23,6 @@ public class PetController : MonoBehaviour
         {
             return;
         }
-
-        Debug.Log(petPos);
         targetPos = character.position + petPos;
 
         float speed = 5f;

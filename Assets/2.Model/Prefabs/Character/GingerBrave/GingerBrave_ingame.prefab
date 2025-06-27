@@ -127,7 +127,6 @@ MonoBehaviour:
   Jumpclip: {fileID: 8300000, guid: 069407af361a37240bcb6f67c82bae2c, type: 3}
   Slideclip: {fileID: 8300000, guid: 96b91e92fc301e4488cff151354efcfb, type: 3}
   Crashclip: {fileID: 8300000, guid: 95594cec51140334d968880b016fc46c, type: 3}
-  Hpclip: {fileID: 8300000, guid: 0ea4e98d91c09aa4bb274b5018ab5d19, type: 3}
   isStop: 0
   isHPZero: 0
   isGiant: 0
@@ -135,6 +134,8 @@ MonoBehaviour:
   iscrash: 0
   isAbsoluteInvincible: 0
   isBlinkInvincible: 0
+  AttractDist: 5
+  AttractSpeed: 10
 --- !u!50 &1864259704657585185
 Rigidbody2D:
   serializedVersion: 4
