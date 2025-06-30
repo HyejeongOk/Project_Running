@@ -178,4 +178,4 @@ MonoBehaviour:
   score: 5
   jellyClip: {fileID: 8300000, guid: 53e9a80ce4e9a7e478ef235c3b1db90f, type: 3}
   AttractDist: 5
-  AttractSpeed: 3
+  AttractSpeed: 10
